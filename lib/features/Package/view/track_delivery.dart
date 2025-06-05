@@ -21,6 +21,28 @@ class _TrackDeliveryState extends State<TrackDelivery> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Column( 
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                
+                Text(
+                  "Order ID:",
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    color: const Color.fromARGB(255, 139, 139, 139),
+                  ),
+                ),
+                2.vs,
+                Text(
+                  "ORD-123456789",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w700,
+                    color: const Color.fromARGB(255, 0, 0, 0),
+                  ),
+                ),
+              ],),
               10.vs,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -78,7 +100,7 @@ class _TrackDeliveryState extends State<TrackDelivery> {
                     // Right Box - Weight
                     Container(
                       width: 75.w,
-                      height: 120.h,
+                      height: 127.h,
                       decoration: BoxDecoration(
                         color: const Color.fromRGBO(254, 99, 38,1),
                         borderRadius: BorderRadius.circular(30.r),
@@ -135,7 +157,7 @@ class _TrackDeliveryState extends State<TrackDelivery> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                  padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 7.h),
                   decoration: BoxDecoration(
                     color: const Color.fromRGBO(216, 220, 224, 1),
                     borderRadius: BorderRadius.circular(40.r),
