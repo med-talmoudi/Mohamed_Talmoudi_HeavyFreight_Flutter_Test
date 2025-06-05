@@ -24,361 +24,363 @@ class _PackageFormState extends State<PackageForm> {
   int selectedCardIndex = -1; // Track selected card index
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: customAppBar(
-        context,
-        "New Delivery",
-      ),
-      resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        
-        child: Stack(
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/bg_image.avif"),
-                  fit: BoxFit.fill,
+    return SafeArea(
+      child: Scaffold(
+        appBar: customAppBar(
+          context,
+          "New Delivery",
+        ),
+        resizeToAvoidBottomInset: false,
+        body: SafeArea(
+          
+          child: Stack(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/newbg.avif"),
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
-            ),
-
-            Container(
-              color: const Color.fromARGB(
-                144,
-                0,
-                0,
-                0,
-              ), // adjust opacity to control darkness
-            ),
-            SingleChildScrollView(
-              child: Form(
-                key: _formKeyRegister,
-                child: Column(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.fromLTRB(20.w, 10.h, 20.w, 30.h),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(20.r),
-                          bottomRight: Radius.circular(20.r),
+      
+              Container(
+                color: const Color.fromARGB(
+                  144,
+                  0,
+                  0,
+                  0,
+                ), // adjust opacity to control darkness
+              ),
+              SingleChildScrollView(
+                child: Form(
+                  key: _formKeyRegister,
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.fromLTRB(20.w, 10.h, 20.w, 30.h),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(20.r),
+                            bottomRight: Radius.circular(20.r),
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Row 1: Green Circle + "From"
+                            Row(
+                              children: [
+                                _buildCircle(
+                                  15,
+                                  const Color.fromRGBO(106, 153, 78, 1),
+                                ),
+                                10.hs,
+                                Text(
+                                  "From",
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color.fromARGB(255, 65, 67, 69),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            2.vs,
+      
+                            // Row 2: Grey circle + address + svg icon
+                            Row(
+                              children: [
+                                2.hs,
+                                _buildCircle(
+                                  10,
+                                  const Color.fromRGBO(173, 181, 189, 1),
+                                ),
+                                10.hs,
+                                Expanded(
+                                  child: _buildAddressField(
+                                    "Gabes 6011, Cite Zouhour",
+                                    "Please enter pickup address",
+                                    _pUAddressController,
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                   Navigator.pushNamed(
+                                      context,
+                                      '/delivery_info',
+                                      
+                                    );
+                                  },
+                                  child: SvgPicture.asset(
+                                    'assets/map_icon.svg',
+                                    width: 24,
+                                    height: 24,
+                                    colorFilter: const ColorFilter.mode(
+                                      Colors.black,
+                                      BlendMode.srcIn,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            2.vs,
+      
+                            // Row 3: Grey circle + horizontal line
+                            Row(
+                              children: [
+                                2.hs,
+                                _buildCircle(
+                                  10,
+                                  const Color.fromRGBO(173, 181, 189, 1),
+                                ),
+                                SizedBox(width: 10.w),
+                                Expanded(
+                                  child: Divider(
+                                    color: const Color.fromRGBO(173, 181, 189, 1),
+                                    thickness: 1.h,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            2.vs,
+      
+                            // Row 4: Grey circle + "To"
+                            Row(
+                              children: [
+                                2.hs,
+                                _buildCircle(
+                                  10,
+                                  const Color.fromRGBO(173, 181, 189, 1),
+                                ),
+                                10.hs,
+                                Text(
+                                  "To",
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color.fromARGB(255, 65, 67, 69),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            2.vs,
+      
+                            // Row 5: Yellow circle + destination + svg
+                            Row(
+                              children: [
+                                _buildCircle(
+                                  15,
+                                  const Color.fromRGBO(253, 163, 16, 1),
+                                ),
+                                10.hs,
+      
+                                Expanded(
+                                  child: _buildAddressField(
+                                    "Tunis 4021, Cite Olympique",
+                                    "Please enter drop-off address",
+                                    _dFAddressController,
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                  
+                                    Navigator.pushNamed(
+                                      context,
+                                      '/delivery_info',
+                                      
+                                    );
+                                  },
+                                  child: SvgPicture.asset(
+                                    'assets/map_icon.svg',
+                                    width: 24,
+                                    height: 24,
+                                    colorFilter: const ColorFilter.mode(
+                                      Colors.black,
+                                      BlendMode.srcIn,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      10.vs,
+                      Padding(
+                        padding: EdgeInsets.only(left: 20.w),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "Package Size",
+      
+                            style: TextStyle(
+                              fontSize: 22.sp,
+                              fontWeight: FontWeight.w800,
+                              color: const Color.fromARGB(255, 255, 255, 255),
+                            ),
+                          ),
+                        ),
+                      ),
+                      18.vs,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          // Row 1: Green Circle + "From"
-                          Row(
-                            children: [
-                              _buildCircle(
-                                15,
-                                const Color.fromRGBO(106, 153, 78, 1),
-                              ),
-                              10.hs,
-                              Text(
-                                "From",
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color.fromARGB(255, 65, 67, 69),
-                                ),
-                              ),
-                            ],
+                          WeightCard(
+                            weight: "< 5 Kg",
+                            size: "Small",
+                            svgURL: "small.svg",
+                            isSelected: selectedCardIndex == 0,
+                            width: 45.w,
+                            height: 45.h,
+                            onTap: () {
+                              setState(() {
+                                selectedCardIndex = 0;
+                              });
+                            },
                           ),
-                          2.vs,
-
-                          // Row 2: Grey circle + address + svg icon
-                          Row(
-                            children: [
-                              2.hs,
-                              _buildCircle(
-                                10,
-                                const Color.fromRGBO(173, 181, 189, 1),
-                              ),
-                              10.hs,
-                              Expanded(
-                                child: _buildAddressField(
-                                  "Gabes 6011, Cite Zouhour",
-                                  "Please enter pickup address",
-                                  _pUAddressController,
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                 Navigator.pushNamed(
-                                    context,
-                                    '/delivery_info',
-                                    
-                                  );
-                                },
-                                child: SvgPicture.asset(
-                                  'assets/map_icon.svg',
-                                  width: 24,
-                                  height: 24,
-                                  colorFilter: const ColorFilter.mode(
-                                    Colors.black,
-                                    BlendMode.srcIn,
-                                  ),
-                                ),
-                              ),
-                            ],
+                          WeightCard(
+                            weight: "5 - 20 Kg",
+                            size: "Medium",
+                            svgURL: "medium.svg",
+                            isSelected: selectedCardIndex == 1,
+                            width: 60.w,
+                            height: 60.h,
+                            onTap: () {
+                              setState(() {
+                                selectedCardIndex = 1;
+                              });
+                            },
                           ),
-                          2.vs,
-
-                          // Row 3: Grey circle + horizontal line
-                          Row(
-                            children: [
-                              2.hs,
-                              _buildCircle(
-                                10,
-                                const Color.fromRGBO(173, 181, 189, 1),
-                              ),
-                              SizedBox(width: 10.w),
-                              Expanded(
-                                child: Divider(
-                                  color: const Color.fromRGBO(173, 181, 189, 1),
-                                  thickness: 1.h,
-                                ),
-                              ),
-                            ],
-                          ),
-                          2.vs,
-
-                          // Row 4: Grey circle + "To"
-                          Row(
-                            children: [
-                              2.hs,
-                              _buildCircle(
-                                10,
-                                const Color.fromRGBO(173, 181, 189, 1),
-                              ),
-                              10.hs,
-                              Text(
-                                "To",
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color.fromARGB(255, 65, 67, 69),
-                                ),
-                              ),
-                            ],
-                          ),
-                          2.vs,
-
-                          // Row 5: Yellow circle + destination + svg
-                          Row(
-                            children: [
-                              _buildCircle(
-                                15,
-                                const Color.fromRGBO(253, 163, 16, 1),
-                              ),
-                              10.hs,
-
-                              Expanded(
-                                child: _buildAddressField(
-                                  "Tunis 4021, Cite Olympique",
-                                  "Please enter drop-off address",
-                                  _dFAddressController,
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                
-                                  Navigator.pushNamed(
-                                    context,
-                                    '/delivery_info',
-                                    
-                                  );
-                                },
-                                child: SvgPicture.asset(
-                                  'assets/map_icon.svg',
-                                  width: 24,
-                                  height: 24,
-                                  colorFilter: const ColorFilter.mode(
-                                    Colors.black,
-                                    BlendMode.srcIn,
-                                  ),
-                                ),
-                              ),
-                            ],
+                          WeightCard(
+                            weight: "> 20 Kg",
+                            size: "Large",
+                            svgURL: "large.svg",
+                            isSelected: selectedCardIndex == 2,
+                            width: 70.w,
+                            height: 70.h,
+                            onTap: () {
+                              setState(() {
+                                selectedCardIndex = 2;
+                              });
+                            },
                           ),
                         ],
                       ),
-                    ),
-                    10.vs,
-                    Padding(
-                      padding: EdgeInsets.only(left: 20.w),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "Package Size",
-
-                          style: TextStyle(
-                            fontSize: 22.sp,
-                            fontWeight: FontWeight.w800,
-                            color: const Color.fromARGB(255, 255, 255, 255),
+                      10.vs,
+                      Padding(
+                        padding: EdgeInsets.only(left: 20.w),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "Delivery Packs",
+      
+                            style: TextStyle(
+                              fontSize: 22.sp,
+                              fontWeight: FontWeight.w800,
+                              color: const Color.fromARGB(255, 255, 255, 255),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    18.vs,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        WeightCard(
-                          weight: "< 5 Kg",
-                          size: "Small",
-                          svgURL: "small.svg",
-                          isSelected: selectedCardIndex == 0,
-                          width: 45.w,
-                          height: 45.h,
-                          onTap: () {
-                            setState(() {
-                              selectedCardIndex = 0;
-                            });
-                          },
-                        ),
-                        WeightCard(
-                          weight: "5 - 20 Kg",
-                          size: "Medium",
-                          svgURL: "medium.svg",
-                          isSelected: selectedCardIndex == 1,
-                          width: 60.w,
-                          height: 60.h,
-                          onTap: () {
-                            setState(() {
-                              selectedCardIndex = 1;
-                            });
-                          },
-                        ),
-                        WeightCard(
-                          weight: "> 20 Kg",
-                          size: "Large",
-                          svgURL: "large.svg",
-                          isSelected: selectedCardIndex == 2,
-                          width: 70.w,
-                          height: 70.h,
-                          onTap: () {
-                            setState(() {
-                              selectedCardIndex = 2;
-                            });
-                          },
-                        ),
-                      ],
-                    ),
-                    10.vs,
-                    Padding(
-                      padding: EdgeInsets.only(left: 20.w),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "Delivery Packs",
-
-                          style: TextStyle(
-                            fontSize: 22.sp,
-                            fontWeight: FontWeight.w800,
-                            color: const Color.fromARGB(255, 255, 255, 255),
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    DeliveryOptionSelector(
-                      onSelected: (index) {
-                        setState(() {
-                          selectedPackIndex = index;
-                        });
-                       
-                      },
-                    ),
-
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // print("Selected Pack option: $selectedPackIndex");
-                          // print("Selected Size option: $selectedCardIndex");
-                          if (_formKeyRegister.currentState!.validate() &&
-                              selectedPackIndex != -1 &&
-                              selectedCardIndex != -1) {
-                            setState(() {
-                              setState(() {
-                                loading = true;
-                              });
-                            });
-                            // Simulate a network call or processing
-                            Future.delayed(const Duration(seconds: 2), () {
-                              setState(() {
-                                loading = false;
-                              });
-                            });
-
-                            // Proceed with the next step
-                            Navigator.pushNamed(context, '/track_delivery',
-                               );
-                          } else if (_formKeyRegister.currentState!
-                                  .validate() &&
-                              (selectedPackIndex == -1 ||
-                                  selectedCardIndex == -1)) {
-                            // Show error message or handle validation
-                            Fluttertoast.showToast(
-                              msg:
-                                  "Please select a package size and delivery pack",
-                              toastLength: Toast.LENGTH_LONG,
-                              gravity: ToastGravity.TOP,
-                              timeInSecForIosWeb: 3,
-                              backgroundColor: const Color.fromARGB(
-                                255,
-                                174,
-                                4,
-                                4,
-                              ),
-                              textColor: Colors.white,
-                              fontSize: 16.0,
-                              
-                              
-                            );
-                          }
+      
+                      DeliveryOptionSelector(
+                        onSelected: (index) {
+                          setState(() {
+                            selectedPackIndex = index;
+                          });
+                         
                         },
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(double.infinity, 30.h),
-                          backgroundColor: const Color.fromRGBO(234, 94, 41, 1),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.r),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            vertical: 15.h,
-                            horizontal: 20.w,
-                          ),
-                        ),
-                        child: loading
-                            ? SizedBox(
-                                height: 18.h,
-                                width: 18.h,
-                                child: CircularProgressIndicator(
-                                  color: Colors.white,
-                                  strokeWidth: 2.w,
-                                ),
-                              )
-                            : Text(
-                                "Continue",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 18.sp,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w800,
-                                ),
-                              ),
                       ),
-                    ),
-
-                    
-                  ],
+      
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            // print("Selected Pack option: $selectedPackIndex");
+                            // print("Selected Size option: $selectedCardIndex");
+                            if (_formKeyRegister.currentState!.validate() &&
+                                selectedPackIndex != -1 &&
+                                selectedCardIndex != -1) {
+                              setState(() {
+                                setState(() {
+                                  loading = true;
+                                });
+                              });
+                              // Simulate a network call or processing
+                              Future.delayed(const Duration(seconds: 2), () {
+                                setState(() {
+                                  loading = false;
+                                });
+                              });
+      
+                              // Proceed with the next step
+                              Navigator.pushNamed(context, '/track_delivery',
+                                 );
+                            } else if (_formKeyRegister.currentState!
+                                    .validate() &&
+                                (selectedPackIndex == -1 ||
+                                    selectedCardIndex == -1)) {
+                              // Show error message or handle validation
+                              Fluttertoast.showToast(
+                                msg:
+                                    "Please select a package size and delivery pack",
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.TOP,
+                                timeInSecForIosWeb: 3,
+                                backgroundColor: const Color.fromARGB(
+                                  255,
+                                  174,
+                                  4,
+                                  4,
+                                ),
+                                textColor: Colors.white,
+                                fontSize: 16.0,
+                                
+                                
+                              );
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size(double.infinity, 30.h),
+                            backgroundColor: const Color.fromRGBO(234, 94, 41, 1),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.r),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              vertical: 15.h,
+                              horizontal: 20.w,
+                            ),
+                          ),
+                          child: loading
+                              ? SizedBox(
+                                  height: 18.h,
+                                  width: 18.h,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                    strokeWidth: 2.w,
+                                  ),
+                                )
+                              : Text(
+                                  "Continue",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 18.sp,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                        ),
+                      ),
+      
+                      
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -8,7 +8,8 @@ plugins {
 android {
     namespace = "com.example.heavyfreight"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+     // Set the NDK version to 27.0.12077973 as required by fluttertoast
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
