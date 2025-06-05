@@ -1,8 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:heavyfreight/core/app%20routing/app_routes.dart';
 
 void main() {
+  
+
   runApp(MyApp(appRouter: AppRouter(), initialRoute: '/'));
 }
 

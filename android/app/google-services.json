@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "213448915217",
+    "project_id": "heavyfreight-flutter-app",
+    "storage_bucket": "heavyfreight-flutter-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213448915217:android:cc7b4fc8871d88607cb4b0",
+        "android_client_info": {
+          "package_name": "com.example.heavyfreighttest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpemiiK5Hkd5oPwwDM2p5TRAveoL2T0oo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

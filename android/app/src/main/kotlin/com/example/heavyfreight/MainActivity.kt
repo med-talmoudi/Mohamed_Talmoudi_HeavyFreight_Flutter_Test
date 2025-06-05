@@ -1,4 +1,4 @@
-package com.example.heavyfreight
+package com.example.heavyfreighttest
 
 import io.flutter.embedding.android.FlutterActivity
 
